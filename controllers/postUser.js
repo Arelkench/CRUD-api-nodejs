@@ -3,7 +3,7 @@ import parserReqBody from "../utils/parserReqBody.js";
 import writeToFile from "../utils/writeToFile.js";
 
 export default async (req, res) => {
-    if (req.url === "/api/users") {
+    if (req.url === "/api/users" || req.url === "/api/users/") {
         try {
             const body = await parserReqBody(req);
             body.id = crypto.randomUUID();
@@ -13,10 +13,10 @@ export default async (req, res) => {
             res.end();
         } catch (err) {
             console.log(err);
-            res.writeHead(400, { "Content-Type": "application/json" });
+            res.writeHead(500, { "Content-Type": "application/json" });
             res.end(JSON.stringify({
-                title: "Validation Failed",
-                message: "Request body is not valid",
+                title: "Internal Server Error",
+                message: "An unexpected error occurred while processing the request.",
             }));
         }
     } else {

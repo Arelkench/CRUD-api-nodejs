@@ -14,25 +14,25 @@ export default async (req, res) => {
             message: "UUID is not valid",
         }));
     } else if (baseUrl === "/api/users/" && regexV4.test(id)) {
+        const index = req.users.findIndex(user => user.id === id);
+        if (index === -1) {
+            res.statusCode = 404;
+            res.write(JSON.stringify({ title: "Not Found", message: "User not found" }));
+            res.end();
+            return;
+        }
         try {
             const body = await requestBodyparser(req);
-            const index = req.users.findIndex(user => user.id === id);
-            if (index === -1) {
-                res.statusCode = 404;
-                res.write(JSON.stringify({ title: "Not Found", message: "User not found" }));
-                res.end();
-            } else {
-                req.users[index] = { id, ...body };
-                writeToFile(req.users);
-                res.writeHead(200, { "Content-Type": "application/json" });
-                res.end(JSON.stringify(req.users[index]));
-            }
+            req.users[index] = { id, ...body };
+            writeToFile(req.users);
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify(req.users[index]));
         } catch (err) {
             console.log(err);
-            res.writeHead(400, { "Content-Type": "application/json" });
+            res.writeHead(500, { "Content-Type": "application/json" });
             res.end(JSON.stringify({
-                title: "Validation Failed",
-                message: "Request body is not valid",
+                title: "Internal Server Error",
+                message: "An unexpected error occurred while processing the request.",
             }));
         }
     } else {

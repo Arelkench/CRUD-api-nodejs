@@ -25,7 +25,10 @@ export default (req, res) => {
             res.end(JSON.stringify(req.users));
         }
     } else {
-        res.writeHead(404, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ title: "Not Found", message: "Route not found" }));
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({
+            title: "Internal Server Error",
+            message: "An unexpected error occurred while processing the request.",
+        }));
     }
 };

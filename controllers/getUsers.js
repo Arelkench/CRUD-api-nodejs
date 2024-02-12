@@ -4,7 +4,7 @@ export default (req, res) => {
     const baseUrl = req.url.substring(0, req.url.lastIndexOf("/") + 1);
     const id = req.url.split("/")[3];
 
-    if (req.url === "/api/users") {
+    if (req.url === "/api/users" || req.url === "/api/users/") {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.end(JSON.stringify(req.users));
@@ -26,7 +26,11 @@ export default (req, res) => {
             res.end(JSON.stringify({ title: "Not Found", message: "User not found" }));
         }
     } else {
-        res.writeHead(404, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ title: "Not Found", message: "Route not found" }));
+        console.log(err);
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({
+            title: "Internal Server Error",
+            message: "An unexpected error occurred while processing the request.",
+        }));
     }
 };

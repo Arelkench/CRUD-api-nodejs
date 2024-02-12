@@ -1,6 +1,1 @@
-[{
-  "username": "The Avengers: Infinity war",
-  "age": "2020",
-  "hobbies": ["Action, Adventure, Fantasy"],
-  "id": "3711087e-2863-427e-86d8-1548c3e7b0db"
-}]
+[{"username":"The Avengers: Infinity war","age":"2020","hobbies":["Action, Adventure, Fantasy"],"id":"12"},{"username":"Tina","age":"22","hobbies":["pipiska"],"id":"73cb80ce-3965-46b8-bd1b-be890251c3b7"},{"username":"karina","age":"22","hobbies":["pipiska"],"id":"cd20d6d8-56aa-4c82-99c1-d6d72d3a8cce"},[{"username":"karim","age":"22","hobbies":["pipiska"]}],[{"username":"eduard","age":"22","hobbies":["pipiska"]},{"username":"Tanya","age":"22","hobbies":["pipiska"]}],{"username":"Natasha","age":"22","hobbies":["pipiska"],"id":"d90b6dde-8561-4518-9673-8195cd7d3f49"},{"username":"Natassha","age":"22","hobbies":["pipiska"],"id":"4ced0c2b-271e-4f19-8d11-9a2b97e34575"}]

@@ -5,7 +5,7 @@ import putReq from "./controllers/putUser.js";
 import deleteReq from "./controllers/deleteUser.js";
 import users from "./data/users.json" assert { type: "json" };
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
     req.users = users;
